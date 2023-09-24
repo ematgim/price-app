@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class name="com.emigm.price.rate.domain.Rate" table="rate">
+
+        <id name="id" column="id" type="com.emigm.price.shared.infrastructure.persistence.hibernate.InternalIdType">
+            <generator class="identity"></generator>
+        </id>
+
+        <component name="priceListId" class="com.emigm.price.rate.domain.value_objects.RatePriceListId"
+                   access="field">
+            <property column="price_list_id" name="value" type="integer" access="field"/>
+        </component>
+
+        <component name="productId" class="com.emigm.price.rate.domain.value_objects.RateProductId"
+                   access="field">
+            <property column="product_id" name="value" type="integer" access="field"/>
+        </component>
+
+        <component name="priority" class="com.emigm.price.rate.domain.value_objects.RatePriority"
+                   access="field">
+            <property column="priority" name="value" type="integer" access="field"/>
+        </component>
+
+        <component name="price" class="com.emigm.price.rate.domain.value_objects.RatePrice"
+                   access="field">
+            <property column="price" name="value" type="double" access="field"/>
+        </component>
+
+        <component name="currency" class="com.emigm.price.rate.domain.value_objects.RateCurrency"
+                   access="field">
+            <property column="currency" name="value" type="string" access="field"/>
+        </component>
+
+        <component name="dateRange" class="com.emigm.price.rate.domain.value_objects.RateDateRange"
+                   access="field">
+            <component name="startDate" class="com.emigm.price.rate.domain.value_objects.date_range.DateRangeDate"
+                       access="field">
+                <property column="start_date" name="value" type="LocalDateTime" access="field"/>
+            </component>
+            <component name="endDate" class="com.emigm.price.rate.domain.value_objects.date_range.DateRangeDate"
+                       access="field">
+                <property column="end_date" name="value" type="LocalDateTime" access="field"/>
+            </component>
+
+        </component>
+
+    </class>
+</hibernate-mapping>
