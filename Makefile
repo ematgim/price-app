@@ -14,11 +14,13 @@ build:
 .PHONY: test
 test:
 	@docker-compose up -d mysql-test
+	@sleep 10
 	@./gradlew :test
 
 .PHONY: run
 run:
 	@docker-compose up -d mysql
+	@sleep 10
 	@./gradlew :bootRun
 
 
